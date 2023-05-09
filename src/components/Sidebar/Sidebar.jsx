@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import { useState, useEffect } from "react";
 //icons
 import { ImHome, ImHeart } from "react-icons/im";
 import { RiContactsFill } from "react-icons/ri";
@@ -10,8 +10,35 @@ import { Link, NavLink } from "react-router-dom";
 import "./sidebar.scss";
 
 const Sidebar = () => {
+  const [isDown, setIsDown] = useState("");
+  const [lastPosition, setLastPosition] = useState(0);
+
+  const isMobile = window.innerWidth <= 768;
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const checkUpDown = () => {
+      if (window.scrollY > 400) {
+        if (window.scrollY < lastPosition) {
+          setIsDown("show");
+        } else if (window.scrollY > lastPosition) {
+          setIsDown("hide");
+        }
+      } else {
+        setIsDown("");
+      }
+      setLastPosition(window.scrollY);
+    };
+
+    checkUpDown();
+
+    window.addEventListener("scroll", checkUpDown, { passive: true });
+    return () => window.removeEventListener("scroll", checkUpDown);
+  }, [lastPosition, isMobile]);
+
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isDown}`}>
       <Link to={"/"} className={"open"}>
         <img
           src={logo}

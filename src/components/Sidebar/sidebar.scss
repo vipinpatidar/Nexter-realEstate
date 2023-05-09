@@ -8,12 +8,12 @@
   left: 0;
   height: 100vh;
   z-index: 10;
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-top: 2rem;
   gap: 2rem;
+  transition: transform 300ms;
 
   @media only screen and (max-width: $bp-large) {
     grid-column: 1 / -1;
@@ -29,12 +29,22 @@
     height: 8.5rem;
     padding-top: 0rem;
   }
+
   @media only screen and (max-width: $bp-medium) {
     padding-inline: 1rem;
     gap: 0rem;
   }
 }
 
+@media only screen and (max-width: $bp-medium) {
+  .show {
+    transform: translateY(0px);
+  }
+
+  .hide {
+    transform: translateY(-8.8rem);
+  }
+}
 .icon-btn {
   border: none;
   border-radius: 0;
