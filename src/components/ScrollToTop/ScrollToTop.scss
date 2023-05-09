@@ -1,0 +1,46 @@
+@import "../../main.scss";
+
+.scrollTop {
+  position: fixed;
+  bottom: 6rem;
+  right: 4rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 1px solid $color-primary;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary;
+  transition: all 500ms;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  z-index: 110;
+
+  @media only screen and (max-width: $bp-medium) {
+    bottom: 5rem;
+    right: 1rem;
+    width: 30px;
+    height: 30px;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: #fff;
+  }
+
+  &_icon {
+    font-size: 2.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media only screen and (max-width: $bp-medium) {
+      // font-size: 2rem;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}

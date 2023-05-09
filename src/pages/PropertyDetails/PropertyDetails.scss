@@ -1,0 +1,23 @@
+@import "../../main.scss";
+
+.recommends {
+  margin: 0rem 0 4rem;
+  grid-column: center-start / center-end;
+  position: relative;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1 / -1;
+    grid-row: 4/5;
+    padding: 0 3rem;
+    margin: 0rem 0 8rem;
+  }
+
+  &_heading {
+    margin: 9rem 0 4rem;
+    font-size: 3.5rem;
+
+    @media only screen and (max-width: $bp-large) {
+      margin: 6rem 0 3rem;
+    }
+  }
+}

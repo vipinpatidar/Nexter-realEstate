@@ -1,0 +1,85 @@
+@import "../../main.scss";
+
+.homeDetails {
+  margin: 2rem 0 1rem;
+  grid-column: center-start / center-end;
+  width: 100%;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1 / -1;
+    grid-row: 3/4;
+    padding: 0 7rem;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0 0rem;
+  }
+  &_grid {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    column-gap: 3.2rem;
+    margin-top: 3.5rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      grid-template-columns: 100%;
+      row-gap: 4rem;
+      padding: 3rem;
+      margin-top: 3.5rem;
+    }
+  }
+}
+.fix_props {
+  width: 100%;
+  padding: 2.5rem 3rem 3rem;
+  box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.2);
+  background-color: $color-grey-light-1;
+
+  @media only screen and (max-width: $bp-medium) {
+    padding: 1.5rem 2rem 2rem;
+  }
+}
+
+.swiper_pad {
+  @media only screen and (max-width: $bp-medium) {
+    padding: 1.5rem 0.6rem 8rem;
+  }
+}
+
+.swiper_head {
+  @media only screen and (max-width: $bp-medium) {
+    padding-left: 2rem;
+  }
+}
+
+.fix_heading {
+  font-size: 2.5rem;
+}
+
+.grid_left {
+  width: 100%;
+  // &_slider {
+  // }
+
+  &_overview {
+    margin-top: 4rem;
+  }
+}
+
+.grid_right {
+  width: 100%;
+  height: fit-content;
+  // &_fixed {
+  //   position: sticky;
+  //   top: 0;
+  //   left: 0;
+  //   height: 1111px;
+  // }
+  &_form {
+    p {
+      font-size: 1.7rem;
+      color: $color-secondary;
+    }
+  }
+  &_agent {
+    margin-top: 4rem;
+  }
+}

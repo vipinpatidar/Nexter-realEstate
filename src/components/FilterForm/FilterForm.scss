@@ -1,0 +1,51 @@
+@import "../../main.scss";
+
+.filterForm {
+  height: 75px;
+  width: 100%;
+  @media only screen and (max-width: $bp-medium) {
+    height: 380px;
+    width: 330px;
+  }
+  &_items {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    @media only screen and (max-width: $bp-medium) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+.dropdown {
+  flex: 1 1 0%;
+  height: 100%;
+  width: 100%;
+
+  &-btn {
+    flex: 1 1 0%;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background-color: $color-primary;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-primary-dark;
+    }
+  }
+}
+
+.reset_btn {
+  background-color: #44586f;
+
+  &:hover {
+    background-color: #44586f;
+  }
+}

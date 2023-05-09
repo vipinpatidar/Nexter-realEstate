@@ -1,0 +1,31 @@
+@import "../../main.scss";
+
+.noFavorites {
+  margin: 6rem 0 2rem;
+  grid-column: center-start / center-end;
+  text-align: center;
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    padding: 0 4rem;
+  }
+}
+
+.favoritesCards {
+  margin: 6rem 0 2rem;
+  grid-column: center-start / center-end;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1/-1;
+    grid-row: 3/4;
+    padding: 0 4rem;
+  }
+}
+
+.recommends {
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1/-1;
+    grid-row: 4/5;
+    padding: 0 4rem;
+  }
+}

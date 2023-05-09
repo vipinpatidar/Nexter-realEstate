@@ -1,0 +1,86 @@
+@import "../../../main.scss";
+.detailSlider {
+  width: 100%;
+  position: relative;
+
+  &_swiper {
+    max-width: 712px;
+    width: 100%;
+    height: 400px;
+    border: 8px solid $color-primary;
+    margin-top: 2rem;
+    @media only screen and (max-width: $bp-medium) {
+      height: 300px !important;
+      border: 2px solid $color-primary;
+    }
+  }
+
+  .swiper {
+    position: static;
+  }
+}
+
+.detailImg_slider {
+  width: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+}
+
+/*========================= Testimonial=====================*/
+
+.detailSlider_swiper .swiper-button-prev:after,
+.detailSlider_swiper .swiper-button-next:after {
+  font-size: 16px;
+  color: $color-primary;
+}
+
+.detailSlider_swiper .swiper-button-prev:hover,
+.detailSlider_swiper .swiper-button-next:hover,
+.detailSlider_swiper .swiper-button-prev:hover:after,
+.detailSlider_swiper .swiper-button-next:hover:after {
+  background: $color-secondary;
+  color: #fff !important;
+  border: 1px solid rgba($color-secondary, 1);
+}
+
+.detailSlider_swiper .swiper-button-prev,
+.detailSlider_swiper .swiper-button-next {
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(15, 27, 51, 0.2);
+  top: 54%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba($color-primary, 1);
+  z-index: 20;
+}
+
+.detailSlider_swiper .swiper-button-prev {
+  left: -25px;
+}
+
+.detailSlider_swiper .swiper-button-next {
+  right: -25px;
+}
+
+@media only screen and (max-width: $bp-medium) {
+  .swiper {
+    height: fit-content;
+    position: static;
+  }
+
+  .detailSlider_swiper .swiper-button-prev,
+  .detailSlider_swiper .swiper-button-next {
+    top: 111%;
+  }
+  .detailSlider_swiper .swiper-button-prev {
+    left: 30%;
+  }
+  .detailSlider_swiper .swiper-button-next {
+    left: 50%;
+  }
+}

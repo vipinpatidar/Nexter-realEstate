@@ -1,0 +1,94 @@
+@import "../../main.scss";
+
+.recommend {
+  &_swiper {
+    max-width: 1100px;
+    width: 100%;
+    height: fit-content;
+    position: static;
+    margin-top: 2rem;
+    @media only screen and (max-width: $bp-largest) {
+      max-width: 1000px;
+    }
+    @media only screen and (max-width: $bp-large) {
+      max-width: 600px;
+    }
+  }
+
+  &_slider {
+    width: 100%;
+  }
+}
+
+/*========================= Testimonial=====================*/
+
+.recommend_swiper .swiper-button-prev:after,
+.recommend_swiper .swiper-button-next:after {
+  font-size: 16px;
+  color: $color-primary;
+}
+
+.recommend_swiper .swiper-button-prev:hover,
+.recommend_swiper .swiper-button-next:hover,
+.recommend_swiper .swiper-button-prev:hover:after,
+.recommend_swiper .swiper-button-next:hover:after {
+  background: $color-secondary;
+  color: #fff !important;
+  border: 1px solid rgba($color-secondary, 1);
+}
+
+.recommend_swiper .swiper-button-prev,
+.recommend_swiper .swiper-button-next {
+  background: #fff;
+  box-shadow: 0px 0px 10px rgba(15, 27, 51, 0.2);
+  top: 60%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba($color-primary, 1);
+  z-index: 20;
+}
+
+.recommend_swiper .swiper-button-prev {
+  left: -25px;
+}
+
+.recommend_swiper .swiper-button-next {
+  right: -25px;
+}
+
+@media only screen and (max-width: $bp-large) {
+  .swiper {
+    height: fit-content;
+    position: static;
+  }
+
+  .recommend_swiper .swiper-button-prev,
+  .recommend_swiper .swiper-button-next {
+    top: 106%;
+  }
+  .recommend_swiper .swiper-button-prev {
+    left: 30%;
+  }
+  .recommend_swiper .swiper-button-next {
+    left: 40%;
+  }
+}
+
+@media only screen and (max-width: $bp-medium) {
+  .swiper {
+    height: fit-content;
+    position: static;
+  }
+
+  .recommend_swiper .swiper-button-prev,
+  .recommend_swiper .swiper-button-next {
+    top: 106%;
+  }
+  .recommend_swiper .swiper-button-prev {
+    left: 30%;
+  }
+  .recommend_swiper .swiper-button-next {
+    left: 50%;
+  }
+}

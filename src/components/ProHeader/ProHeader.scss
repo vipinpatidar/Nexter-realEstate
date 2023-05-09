@@ -1,0 +1,186 @@
+@import "../../main.scss";
+
+.proHeader {
+  background-color: $color-grey-dark-1;
+  grid-column: full-start / full-end;
+  position: relative;
+  padding: 10rem;
+  padding-top: 4rem;
+  background: linear-gradient(
+      rgba($color-secondary, 0.73),
+      rgba($color-secondary, 0.73)
+    ),
+    url(../../assets/bigImg/main1.jpg);
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: grid;
+  grid-template-rows: repeat(5, min-content);
+  row-gap: 1.5rem;
+  @media only screen and (max-width: $bp-largest) {
+    padding: 6rem;
+    padding-top: 3rem;
+  }
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1 / -1;
+    grid-row: 2/3;
+    justify-content: center;
+    grid-template-columns: min-content;
+    padding: 5rem;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    height: fit-content;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 5rem;
+  }
+
+  &_logo {
+    height: 3.6rem;
+    justify-self: center;
+  }
+  &_text {
+    margin-top: 10rem;
+    @media only screen and (max-width: $bp-medium) {
+      margin-top: 7rem;
+    }
+  }
+  &_text--2 {
+    margin-top: -10px;
+    @media only screen and (max-width: $bp-medium) {
+      margin-top: -6px;
+    }
+  }
+
+  &_pera {
+    font-size: 1.7rem;
+    color: #fff;
+    width: 500px;
+    @media only screen and (max-width: $bp-medium) {
+      width: fit-content;
+      font-size: 1.9rem;
+    }
+  }
+
+  &_filter {
+    margin-top: 3.2rem;
+    width: 950px;
+    @media only screen and (max-width: $bp-largest) {
+      max-width: 900px;
+    }
+    @media only screen and (max-width: $bp-medium) {
+      width: 330px;
+      justify-self: center;
+      margin-top: 4rem;
+    }
+  }
+  &_video {
+    position: absolute;
+    top: 36%;
+    right: 8%;
+    z-index: 15;
+    transform: translateY(0px);
+
+    animation: video 5s ease-in-out infinite;
+    transition: all;
+    @media only screen and (max-width: $bp-medium) {
+      top: 25%;
+      right: 6%;
+    }
+    .video_flex {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      gap: 2rem;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    .video_text {
+      font-size: 1.6rem;
+    }
+
+    .video_inner {
+      height: 55px;
+      width: 55px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: 2px solid #fff;
+      outline-offset: 7px;
+      transition: all 400ms;
+      cursor: pointer;
+
+      font-size: 3rem;
+      color: $color-secondary;
+      &:hover {
+        background-color: $color-primary;
+        outline-offset: 9px;
+        color: #fff;
+        outline: 2px solid #fff;
+      }
+    }
+  }
+}
+
+.house {
+  display: flex;
+  align-items: center;
+  gap: 2.6rem;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+  @media only screen and (max-width: $bp-medium) {
+    // display: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: flex-start;
+    gap: 2.6rem;
+    margin-top: 2.8rem;
+  }
+  &_type {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    cursor: pointer;
+  }
+
+  &_icon {
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+  }
+
+  &_text {
+    font-size: 1.6rem;
+    color: #fff;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+@keyframes video {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-36px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

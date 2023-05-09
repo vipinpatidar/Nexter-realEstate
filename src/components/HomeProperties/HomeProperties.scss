@@ -1,0 +1,124 @@
+@import "../../main.scss";
+
+.homePropertiesMain {
+  grid-column: full-start / full-end;
+  padding: 10rem 10%;
+
+  background: rgba($color-primary, 0.1);
+
+  @media only screen and (max-width: 1280px) {
+    padding: 10rem 6%;
+  }
+
+  @media only screen and (max-width: $bp-medium) {
+    grid-column: 1 / -1;
+    grid-row: 5/6;
+    padding: 10rem 0% 7rem;
+  }
+}
+
+.bg-div {
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 180px;
+  background: linear-gradient(
+      rgba($color-secondary, 0.6),
+      rgba($color-secondary, 0.6)
+    ),
+    url(../../assets//bigImg/slide3.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 1rem 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (max-width: $bp-medium) {
+    height: 450px;
+  }
+}
+
+.main-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12rem;
+  @media only screen and (max-width: $bp-medium) {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+  }
+}
+
+.pro-heading {
+  font-size: 4.8rem;
+  margin-bottom: 1.6rem;
+}
+
+.pro-heading-flex {
+  margin: 2.8rem 0 10rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  @media only screen and (max-width: $bp-medium) {
+    padding-inline: 2rem;
+    margin: 2.8rem 0 8rem;
+  }
+}
+
+.quotes {
+  text-transform: capitalize;
+  color: $color-secondary;
+  font-size: 2rem;
+  width: 500px;
+  line-height: 26px;
+  display: block;
+  @media only screen and (max-width: $bp-medium) {
+    width: 100%;
+  }
+}
+
+.seeAll-btn {
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-family: $font-display;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+  background-color: $color-dark-2;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: $color-primary-dark;
+    z-index: -1;
+    transition: all 500ms;
+    transform-origin: top left;
+  }
+
+  &:hover::before {
+    top: 0%;
+  }
+}
+
+.home_proCards {
+  @media only screen and (max-width: $bp-medium) {
+    padding: 0 4rem;
+  }
+}
+
+.oopsHeading {
+  margin-top: 4rem;
+  color: #eb6753;
+}

@@ -1,0 +1,82 @@
+@import "../../../main.scss";
+
+.formDetails {
+  min-height: 560px;
+  &_left {
+    width: 100%;
+    transition: opacity 100ms;
+  }
+
+  &_flexCol {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &_input_flexCol {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+
+    label {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $color-secondary;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      font-size: 14px;
+      outline: none;
+      border: 1px solid #d7d7d7;
+      padding: 10px 15px;
+    }
+
+    input {
+      height: 55px;
+    }
+  }
+
+  &_btn {
+    margin-top: 1.8rem;
+  }
+
+  &_btn_flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2.6rem 0;
+
+    button {
+      background-color: #fff;
+      text-transform: capitalize;
+      border: 1px solid #d7d7d7;
+      color: #000;
+    }
+
+    button:hover {
+      background: #fff;
+    }
+  }
+
+  &_check {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0 5px;
+
+    .check_pera {
+      font-size: 14px;
+    }
+  }
+}
+input[type="checkbox"] {
+  accent-color: $color-primary;
+  color: #fff;
+  height: 16px;
+  width: 16px;
+}

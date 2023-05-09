@@ -1,0 +1,139 @@
+@import "../../main.scss";
+
+.contactForm {
+  margin: 8rem 0 6rem;
+  grid-column: center-start / center-end;
+  display: grid;
+
+  grid-template-columns: 45% 48%;
+  column-gap: 5rem;
+  justify-content: space-between;
+
+  @media only screen and (max-width: $bp-large) {
+    grid-column: 1 / -1;
+    grid-row: 3/4;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr 1fr;
+    row-gap: 4rem;
+    padding: 3rem;
+  }
+
+  &_heading {
+    font-size: 2.5rem;
+    font-weight: 600;
+  }
+
+  &_left,
+  &_right {
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.12);
+    padding: 4rem;
+    @media only screen and (max-width: $bp-medium) {
+      padding: 2.5rem;
+    }
+  }
+
+  &_right {
+    padding: 0 0 1px;
+  }
+
+  &_flexCol {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &_address {
+    padding: 4rem 4rem 2rem;
+
+    @media only screen and (max-width: $bp-medium) {
+      padding: 2.5rem 2.5rem 2rem;
+    }
+  }
+
+  &_input_flexCol {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+
+    label {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: $color-secondary;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      font-size: 14px;
+      outline: none;
+      border: 1px solid #d7d7d7;
+      padding: 10px;
+    }
+
+    input {
+      height: 55px;
+    }
+  }
+
+  &_btn {
+    margin-top: 1.8rem;
+  }
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  &_heading {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: $color-secondary;
+  }
+
+  &_address {
+    font-size: 1.4rem;
+    color: rgb(93, 93, 93);
+  }
+
+  &_info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    span:first-child {
+      color: $color-primary;
+      font-size: 1.6rem;
+    }
+
+    span:last-child {
+      color: black;
+      font-size: 1.5rem;
+    }
+  }
+
+  &_link {
+    color: $color-secondary;
+    font-size: 1.5rem;
+    &:hover {
+      color: $color-primary-dark;
+    }
+  }
+  &_map {
+    width: 100%;
+    padding: 2px;
+    height: 42%;
+    position: relative;
+
+    .map {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  }
+}
