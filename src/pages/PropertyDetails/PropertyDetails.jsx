@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import ContactHeader from "../../components/ContactHeader/ContactHeader";
 //css
 import "./PropertyDetails.scss";
-import HomeDetails from "../../components/homeDetails/HomeDetails";
+import HomeDetails from "../../components/HomeDetails/HomeDetails";
 import Recommend from "../../components/Recommend/Recommend";
 //context
 import { NexterContext } from "../../context/store";
