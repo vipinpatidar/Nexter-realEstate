@@ -13,7 +13,7 @@ const Sidebar = () => {
   const [isDown, setIsDown] = useState("");
   const [lastPosition, setLastPosition] = useState(0);
 
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 1034;
 
   useEffect(() => {
     if (!isMobile) return;
@@ -43,12 +43,12 @@ const Sidebar = () => {
         <img
           src={logo}
           alt="key"
-          className="icon-btn"
+          className="icon-btn logo"
           title="logo"
           style={{
-            filter: "brightness(0.4) saturate(0%)",
-            width: "4.5rem",
-            height: "4.5rem",
+            filter: "brightness(0.3) saturate(0%)",
+            width: "4rem",
+            height: "4rem",
             display: "block",
           }}
         />

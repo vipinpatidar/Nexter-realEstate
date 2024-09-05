@@ -1,5 +1,26 @@
 @import "../../main.scss";
 
+.header-flex {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  column-gap: 3.2rem;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+  @media only screen and (max-width: $bp-medium) {
+    grid-template-columns: 100%;
+    row-gap: 3rem;
+    padding: 3rem;
+    margin-bottom: 0rem;
+    padding-bottom: 0;
+  }
+}
+
+.make-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .homeDetails {
   margin: 2rem 0 1rem;
   grid-column: center-start / center-end;
@@ -17,13 +38,11 @@
     display: grid;
     grid-template-columns: 65% 35%;
     column-gap: 3.2rem;
-    margin-top: 3.5rem;
 
     @media only screen and (max-width: $bp-medium) {
       grid-template-columns: 100%;
       row-gap: 4rem;
       padding: 3rem;
-      margin-top: 3.5rem;
     }
   }
 }
@@ -40,7 +59,7 @@
 
 .swiper_pad {
   @media only screen and (max-width: $bp-medium) {
-    padding: 1.5rem 0.6rem 8rem;
+    padding: 1.5rem 0.6rem 9rem;
   }
 }
 
@@ -66,13 +85,18 @@
 
 .grid_right {
   width: 100%;
-  height: fit-content;
+  height: 159vh;
+  position: sticky;
+  top: 15px;
   // &_fixed {
-  //   position: sticky;
-  //   top: 0;
   //   left: 0;
   //   height: 1111px;
   // }
+  @media only screen and (max-width: $bp-large) {
+    position: relative;
+    height: fit-content;
+    top: auto;
+  }
   &_form {
     p {
       font-size: 1.7rem;
@@ -82,4 +106,37 @@
   &_agent {
     margin-top: 4rem;
   }
+}
+
+.upperInfo_right_price {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  & .price {
+    font-size: 3.2rem;
+    color: $color-secondary;
+    font-weight: bold !important;
+    margin-right: 10px;
+    line-height: 42px;
+
+    @media only screen and (max-width: $bp-medium) {
+      font-size: 3rem;
+    }
+    @media only screen and (max-width: $bp-smallest) {
+      margin-right: 0;
+    }
+  }
+  & .sqPrice {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}
+
+.heart_icon {
+  height: 3.5rem;
+  width: 3.8rem;
+  cursor: pointer;
 }

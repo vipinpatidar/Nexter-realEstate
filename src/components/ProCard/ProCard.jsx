@@ -13,7 +13,7 @@ import { NexterContext } from "../../context/store";
 const ProCard = ({ home }) => {
   const { dispatch } = useContext(NexterContext);
 
-  const handlerClilck = (id) => {
+  const handlerClick = (id) => {
     dispatch({ type: "FAVORITE", id: id });
     dispatch({ type: "FILTER", value: "heart" });
   };
@@ -24,9 +24,12 @@ const ProCard = ({ home }) => {
 
       <ImHeart
         className="home__like"
-        style={{ fill: `${home.isFavorite ? "#e31b23" : "#c69963"}` }}
+        style={{
+          fill: `${home.isFavorite ? "#e31b23" : "#c69963"}`,
+          cursor: "pointer",
+        }}
         title="Add To Favorite"
-        onClick={() => handlerClilck(home.id)}
+        onClick={() => handlerClick(home.id)}
       />
       <h5 className="home__name">{home.name}</h5>
       <div className="home__location">

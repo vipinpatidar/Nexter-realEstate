@@ -1,7 +1,7 @@
 // import React from "react";
 
 import "./HomeDetails.scss";
-import HomeDetailsHeader from "./DetailsHeader/DetailsHeader";
+// import HomeDetailsHeader from "./DetailsHeader/DetailsHeader";
 import DetailsSlider from "./DetailsSlider/DetailsSlider";
 import DetailsOverview from "./DetailsOverview/DetailsOverview";
 import DetailsDes from "./DetailsDes/DetailsDes";
@@ -9,6 +9,9 @@ import DetailsAddress from "./DetailsAddress/DetailsAddress";
 //eslint-disable-next-line
 import FormDetails from "./FormDetails/FormDetails";
 import AgentDetails from "./AgentDetails/AgentDetails";
+import { ImHeart } from "react-icons/im";
+import { useContext } from "react";
+import { NexterContext } from "../../context/store";
 
 const HomeDetails = ({ house }) => {
   const {
@@ -30,19 +33,37 @@ const HomeDetails = ({ house }) => {
     isFavorite,
   } = house[0];
 
+  const { dispatch } = useContext(NexterContext);
+
   return (
     <div className="homeDetails">
-      {/* upper info */}
-      <HomeDetailsHeader
-        address={address}
-        bathrooms={bathrooms}
-        bedrooms={bedrooms}
-        surface={surface}
-        price={price}
-        name={name}
-        id={id}
-        isFavorite={isFavorite}
-      />
+      <div className="header-flex">
+        {/* Price */}
+        <div className="grid_left_slider fix_props make-flex">
+          <h3 className="heading-4 fix_heading swiper_head">Price</h3>
+          <div className="upperInfo_right_price">
+            <h2 className="price">${price}</h2>
+            <p className="sqPrice">{`$${bedrooms * 600}/sq ft`}</p>
+          </div>
+        </div>
+
+        {/* favorite */}
+        <div className="grid_right_form fix_props make-flex">
+          <h3 className="heading-4 fix_heading ">Add To Favorites</h3>
+          <span
+            title="Add Favorite"
+            onClick={() => dispatch({ type: "FAVORITE", id })}
+          >
+            <ImHeart
+              style={{
+                fill: `${isFavorite ? "#e31b23" : "#c69963"}`,
+              }}
+              className="heart_icon"
+            />
+          </span>
+        </div>
+      </div>
+
       {/* full details */}
       <div className="homeDetails_grid">
         <div className="grid_left">

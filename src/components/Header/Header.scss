@@ -14,7 +14,7 @@
   grid-column: full-start / col-end 6;
   overflow: hidden;
   position: relative;
-  @media only screen and (max-width: $bp-large) {
+  @media only screen and (max-width: $bp-medium) {
     grid-column: 1 / -1;
     grid-row: 2/3;
   }

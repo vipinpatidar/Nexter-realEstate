@@ -9,7 +9,7 @@ import "./FilterForm.scss";
 //context
 import { NexterContext } from "../../context/store";
 
-const FilterForm = () => {
+const FilterForm = ({ setIsClicked }) => {
   const { state, dispatch } = useContext(NexterContext);
 
   return (
@@ -66,13 +66,19 @@ const FilterForm = () => {
 
         <button
           className="dropdown-btn heading-4"
-          onClick={() => dispatch({ type: "FILTER", value: "search" })}
+          onClick={() => {
+            dispatch({ type: "FILTER", value: "search" });
+            setIsClicked("");
+          }}
         >
           Search
         </button>
         <button
           className="dropdown-btn reset_btn heading-4"
-          onClick={() => dispatch({ type: "PAGERESET" })}
+          onClick={() => {
+            dispatch({ type: "PAGERESET" });
+            setIsClicked("");
+          }}
         >
           Reset All
         </button>

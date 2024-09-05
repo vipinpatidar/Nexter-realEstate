@@ -18,6 +18,7 @@ import { NexterContext } from "../../context/store";
 
 const ProHeader = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isClicked, setIsClicked] = useState("");
 
   const { dispatch } = useContext(NexterContext);
 
@@ -42,47 +43,85 @@ const ProHeader = () => {
           Owning Home.”
         </p>
         <div className="proHeader_filter">
-          <FilterForm />
+          <FilterForm setIsClicked={setIsClicked} />
         </div>
         <div className="house">
           <div
             className="house_type"
-            onClick={() => dispatch({ type: "HOUSETYPE", value: "Apartments" })}
+            onClick={() => {
+              dispatch({ type: "HOUSETYPE", value: "Apartments" });
+              setIsClicked("Apartments");
+            }}
           >
             <span className="house_icon">
               <MdOutlineApartment />
             </span>
-            <h6 className="house_text">Apartments</h6>
+            <h6
+              className="house_text"
+              style={{
+                color: `${isClicked === "Apartments" ? "#c69963" : ""}`,
+              }}
+            >
+              Apartments
+            </h6>
           </div>
           <div
             className="house_type"
-            onClick={() => dispatch({ type: "HOUSETYPE", value: "Townhouses" })}
+            onClick={() => {
+              dispatch({ type: "HOUSETYPE", value: "Townhouses" });
+              setIsClicked("Townhouses");
+            }}
           >
             {" "}
             <span className="house_icon">
               <BsHouse />
             </span>
-            <h6 className="house_text">Townhouses</h6>
+            <h6
+              className="house_text"
+              style={{
+                color: `${isClicked === "Townhouses" ? "#c69963" : ""}`,
+              }}
+            >
+              Townhouses
+            </h6>
           </div>
           <div
             className="house_type"
-            onClick={() => dispatch({ type: "HOUSETYPE", value: "Villas" })}
+            onClick={() => {
+              dispatch({ type: "HOUSETYPE", value: "Villas" });
+              setIsClicked("Villas");
+            }}
           >
             {" "}
             <span className="house_icon">
               <MdOutlineVilla />
             </span>
-            <h6 className="house_text">Villas</h6>
+            <h6
+              className="house_text"
+              style={{ color: `${isClicked === "Villas" ? "#c69963" : ""}` }}
+            >
+              Villas
+            </h6>
           </div>
           <div
             className="house_type"
-            onClick={() => dispatch({ type: "HOUSETYPE", value: "Penthouses" })}
+            onClick={() => {
+              dispatch({ type: "HOUSETYPE", value: "Penthouses" });
+              setIsClicked("Penthouses");
+            }}
           >
             {" "}
             <span className="house_icon">
               <BiBuildingHouse />
             </span>
-            <h6 className="house_text">Penthouses</h6>
+            <h6
+              className="house_text"
+              style={{
+                color: `${isClicked === "Penthouses" ? "#c69963" : ""}`,
+              }}
+            >
+              Penthouses
+            </h6>
           </div>
         </div>
       </div>

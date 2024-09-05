@@ -33,7 +33,7 @@ const Recommend = ({ cards }) => {
       }}
       className="recommend_swiper"
     >
-      {cards.map((card) => (
+      {cards?.map((card) => (
         <SwiperSlide key={card.id} className="recommend_slider">
           <ProCard home={card} />
         </SwiperSlide>

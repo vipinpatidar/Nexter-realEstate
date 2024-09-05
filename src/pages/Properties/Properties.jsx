@@ -12,7 +12,7 @@ import OpenOnTop from "../../components/OpenOnTop/OpenOnTop";
 const PropertiesPage = () => {
   const ctx = useContext(NexterContext);
 
-  // console.log(ctx.state);
+  // console.log(ctx.state.filteredArr);
 
   return (
     <>
@@ -20,9 +20,9 @@ const PropertiesPage = () => {
       <div className="container">
         <ProHeader />
         <div className="property_cards">
-          {ctx.state.filteredArr.length > 0 ? (
+          {ctx.state?.houseArr?.length > 0 ? (
             <>
-              <ProCards homesArr={ctx.state.filteredArr} />
+              <ProCards homesArr={ctx.state?.houseArr} />
             </>
           ) : (
             <div>

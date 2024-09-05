@@ -2,6 +2,10 @@
 
 This is a README file for a React-based real estate website called Nexter. It includes information about the project, how to set it up, and how to use it.
 
+## Live At
+
+https://nexter-realestate-vipin.netlify.app/
+
 ## Project Description
 
 This React project is a real estate website that allows users to filter properties according to price, rooms, country, and type of property. It includes the following features:

@@ -8,11 +8,15 @@
   align-content: center;
   justify-content: center;
   justify-items: center;
-  grid-row-gap: 2rem;
+  gap: 2rem;
 
+  @media only screen and (max-width: $bp-large) {
+    padding: 5rem 3rem;
+  }
   @media only screen and (max-width: $bp-medium) {
     grid-column: 1 / -1;
     grid-row: 3/4;
+    padding: 5rem 3rem;
   }
 
   &__list {
@@ -23,6 +27,8 @@
     align-items: center;
 
     @media only screen and (max-width: $bp-medium) {
+      grid-column-gap: 2rem;
+      grid-row-gap: 3vh;
       grid-template-columns: repeat(3, min-content max-content);
     }
 

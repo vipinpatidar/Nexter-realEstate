@@ -19,9 +19,7 @@ const PropertyDetails = () => {
 
   const house = state.houseArr.filter((house) => house.id === +proId);
 
-  const recommendations = state.recommendedArr.filter(
-    (house) => house.id !== +proId
-  );
+  const recommendations = state.houseArr.filter((house) => house.id !== +proId);
 
   return (
     <div className="container">

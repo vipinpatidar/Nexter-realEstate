@@ -46,7 +46,7 @@ const Favorites = () => {
           <h2 className="heading-2 recommends_heading">
             Recommended Properties
           </h2>
-          <Recommend cards={state.recommendedArr} />
+          <Recommend cards={state.houseArr} />
         </div>
       </div>
     </>

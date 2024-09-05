@@ -991,7 +991,7 @@ export const housesData = [
       "We is pleased to offer this outstanding 5-bedroom house for sale in Verdana 2, india Investment Park. Size: 3753 sq. ft, high-end finishing Huge front yard Private parking space FEATURES AND AMENITIES: Fully-equipped gymnasium -Adult and kids swimming pools Landscaped areas -Kids play area  both fast-paced and slow-paced lifestyles and a large oasis of both vibrancy and tranquility in the midst of india’s bustling life.",
     image: House10Lg,
     slideImg: [House10Lg, living6, bedroom1, bathroom6, kitchen1],
-    country: "Canada",
+    country: "United States",
     address: "84 Woodland St. Cocoa, FL 32927",
     bedrooms: "5",
     bathrooms: "5",

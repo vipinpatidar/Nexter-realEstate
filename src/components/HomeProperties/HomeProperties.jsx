@@ -10,8 +10,9 @@ import { NexterContext } from "../../context/store";
 
 const HomeProperties = () => {
   const { state } = useContext(NexterContext);
+  // console.log(state);
 
-  const homesArr = state?.filteredArr.slice(0, 6);
+  const homesArr = state?.houseArr.slice(0, 6);
 
   return (
     <>
@@ -26,7 +27,7 @@ const HomeProperties = () => {
           </q>
         </div>
         <div className="bg-div">
-          <FilterForm />
+          <FilterForm setIsClicked={() => {}} />
         </div>
         <div className="main-flex">
           <div>
@@ -40,7 +41,7 @@ const HomeProperties = () => {
           </Link>
         </div>
         <div className="home_proCards">
-          {state?.filteredArr.length > 0 ? (
+          {state?.houseArr.length > 0 ? (
             <>
               <ProCards homesArr={homesArr} />
             </>

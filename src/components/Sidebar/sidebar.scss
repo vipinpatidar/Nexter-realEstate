@@ -17,42 +17,54 @@
 
   @media only screen and (max-width: $bp-large) {
     grid-column: 1 / -1;
-    grid-row: 1 / 2;
+    grid-row: -1;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
+    top: auto;
+    right: 0;
     width: 100%;
-    z-index: 29;
-    height: 8.5rem;
+    z-index: 110;
+    height: 8rem;
     padding-top: 0rem;
   }
 
   @media only screen and (max-width: $bp-medium) {
-    padding-inline: 1rem;
+    padding-inline: 4px;
     gap: 0rem;
   }
 }
 
-@media only screen and (max-width: $bp-medium) {
+@media only screen and (max-width: $bp-large) {
   .show {
     transform: translateY(0px);
   }
 
   .hide {
-    transform: translateY(-8.8rem);
+    transform: translateY(8.8rem);
   }
 }
 .icon-btn {
   border: none;
   border-radius: 0;
   fill: white;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   cursor: pointer;
   display: block;
+
+  @media only screen and (max-width: $bp-medium) {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+.logo {
+  width: 2rem;
+  height: 2rem;
 }
 
 .open {
@@ -60,7 +72,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.6rem;
-  padding: 1.5rem 2rem;
+  padding: 2rem;
   margin-top: 0.5rem;
   width: 100%;
   span {
@@ -69,7 +81,7 @@
     font-weight: 600;
   }
 
-  @media only screen and (max-width: $bp-medium) {
+  @media only screen and (max-width: $bp-large) {
     height: 100%;
     padding: 0rem;
     margin-top: 0;

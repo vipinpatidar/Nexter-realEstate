@@ -16,10 +16,10 @@
   color: $color-primary;
   transition: all 500ms;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-  z-index: 110;
+  z-index: 30;
 
   @media only screen and (max-width: $bp-medium) {
-    bottom: 5rem;
+    bottom: 4.5rem;
     right: 1rem;
     width: 30px;
     height: 30px;

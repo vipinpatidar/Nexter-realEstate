@@ -23,7 +23,7 @@ $bp-largest: 80em; // 1200px
 $bp-large: 65.5em; // 1000px
 $bp-medium: 54em; // 800px;
 $bp-small: 37.5em; // 600px;
-$bp-smallest: 25.5em; // 600px;
+$bp-smallest: 23.5em; // 600px;
 
 *,
 *::before,
@@ -66,7 +66,7 @@ body {
   }
 
   @media only screen and (max-width: $bp-large) {
-    grid-template-rows: 8rem min-content repeat(7, min-content);
+    grid-template-rows: min-content repeat(7, min-content);
     grid-template-columns:
       [full-start] minmax(4rem, 1fr) [center-start] repeat(
         8,

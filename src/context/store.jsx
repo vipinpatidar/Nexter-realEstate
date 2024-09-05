@@ -1,4 +1,319 @@
 import { createContext, useReducer } from "react";
+import { housesData } from "../data/data.js";
+
+export const NexterContext = createContext({
+  houseArr: [],
+  favoriteArr: [],
+  price: "",
+  type: "",
+  country: "",
+  sortBy: "",
+  rooms: "",
+  reset: "",
+});
+
+const initialValues = {
+  houseArr: housesData,
+  favoriteArr: [],
+  price: "Price",
+  type: "Type",
+  country: "Country",
+  sortBy: "Sort By",
+  rooms: "Rooms",
+  reset: "Reset",
+};
+
+const reducer = (state, action) => {
+  // console.log("Reducer:", action, state);
+
+  switch (action.type) {
+    case "FAVORITE": {
+      let arr = housesData.map((house) => {
+        const isFavorite = state.favoriteArr.some((fav) => fav.id === house.id);
+        return { ...house, isFavorite };
+      });
+      const updatedHouseArr = arr.map((house) =>
+        house.id === action.id
+          ? { ...house, isFavorite: !house.isFavorite }
+          : house
+      );
+
+      const allFavorites = updatedHouseArr.filter(
+        (house) => house.isFavorite === true
+      );
+
+      return {
+        ...state,
+        houseArr: updatedHouseArr,
+        favoriteArr: allFavorites,
+      };
+    }
+    case "PRICE":
+    case "TYPE":
+    case "COUNTRY":
+    case "ROOMS":
+    case "RESET":
+      return { ...state, [action.type.toLowerCase()]: action.value };
+    case "SORTBY": {
+      return { ...state, sortBy: action.value };
+    }
+    case "FILTER": {
+      let arr = housesData.map((house) => {
+        const isFavorite = state.favoriteArr.some((fav) => fav.id === house.id);
+        return { ...house, isFavorite };
+      });
+
+      let filteredArr = arr;
+
+      // Apply filters for price, type, rooms, etc.
+      if (state.price !== "Price") {
+        filteredArr = filteredArr.filter(
+          (house) => +house.price >= +state.price
+        );
+      }
+
+      if (state.type !== "Type") {
+        filteredArr = filteredArr.filter((house) =>
+          house.type.toLowerCase().includes(state.type.toLowerCase())
+        );
+      }
+
+      if (state.rooms !== "Rooms") {
+        filteredArr = filteredArr.filter(
+          (house) => +house.bedrooms >= +state.rooms
+        );
+      }
+
+      if (state.country !== "Country") {
+        filteredArr = filteredArr.filter((house) =>
+          house.country.toLowerCase().includes(state.country.toLowerCase())
+        );
+      }
+
+      if (state.sortBy !== "Sort By") {
+        const sortOrder = ["Highest", "Newest"].includes(state.sortBy) ? -1 : 1;
+        const sortKey =
+          state.sortBy === "Newest" || state.sortBy === "Oldest"
+            ? "year"
+            : "price";
+
+        filteredArr.sort((a, b) => sortOrder * (+a[sortKey] - +b[sortKey]));
+      }
+
+      return {
+        ...state,
+        houseArr: filteredArr, // Ensure that the filtered array is set
+      };
+    }
+
+    case "PAGERESET": {
+      let arr = housesData.map((house) => {
+        const isFavorite = state.favoriteArr.some((fav) => fav.id === house.id);
+        return { ...house, isFavorite };
+      });
+
+      // console.log(arr);
+
+      return {
+        ...state,
+        houseArr: arr,
+        price: "Price",
+        type: "Type",
+        country: "Country",
+        sortBy: "Sort By",
+        rooms: "Rooms",
+        reset: "Reset",
+      };
+    }
+    case "HOUSETYPE": {
+      let arr = housesData.map((house) => {
+        const isFavorite = state.favoriteArr.some((fav) => fav.id === house.id);
+        return { ...house, isFavorite };
+      });
+      const roomTypeArr = arr.filter(
+        (house) =>
+          house.type.toLowerCase().indexOf(action.value.toLowerCase()) >= 0
+      );
+      return {
+        ...state,
+        houseArr: roomTypeArr,
+      };
+    }
+    default:
+      return state;
+  }
+};
+
+const NexterContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialValues);
+
+  const context = {
+    state,
+    dispatch,
+  };
+
+  return (
+    <NexterContext.Provider value={context}>{children}</NexterContext.Provider>
+  );
+};
+
+export default NexterContextProvider;
+/*
+import { createContext, useReducer } from "react";
+import { housesData } from "../data/data";
+
+// Initial context object
+export const NexterContext = createContext({
+  houseArr: [],
+  favArr: [],
+  heartFullArr: [],
+  filteredArr: [],
+  favoriteArr: [],
+  recommendedArr: [],
+  price: "",
+  type: "",
+  country: "",
+  sortBy: "",
+  rooms: "",
+  reset: "",
+});
+
+// Initial state values
+const initialValues = {
+  houseArr: housesData,
+  favArr: housesData,
+  heartFullArr: [],
+  filteredArr: housesData,
+  favoriteArr: [],
+  recommendedArr: housesData,
+  price: "Price",
+  type: "Type",
+  country: "Country",
+  sortBy: "Sort By",
+  rooms: "Rooms",
+  reset: "Reset",
+};
+
+// Reducer function
+const reducer = (state, action) => {
+  const updateRecommendedArr = () =>
+    state.heartFullArr.length > 0 ? [...state.heartFullArr] : [...housesData];
+
+  switch (action.type) {
+    case "FAVORITE": {
+      const updatedFilteredArr = state.filteredArr.map((house) =>
+        house.id === action.id
+          ? { ...house, isFavorite: !house.isFavorite }
+          : house
+      );
+
+      // Also update the original favorite array for global use
+      const updatedFavArr = state.favArr.map((house) =>
+        house.id === action.id
+          ? { ...house, isFavorite: !house.isFavorite }
+          : house
+      );
+
+      const updatedFavorites = updatedFavArr.filter(
+        (house) => house.isFavorite
+      );
+
+      return {
+        ...state,
+        filteredArr: updatedFilteredArr, // Ensure filtered array is updated
+        favArr: updatedFavArr, // Global favorite array is also updated
+        favoriteArr: updatedFavorites, // Update the list of favorites
+      };
+    }
+    case "PRICE":
+    case "TYPE":
+    case "COUNTRY":
+    case "SORTBY":
+    case "ROOMS":
+    case "RESET":
+      return { ...state, [action.type.toLowerCase()]: action.value };
+
+    case "FILTER": {
+      let newHouseArr = state.heartFullArr.length
+        ? [...state.heartFullArr]
+        : [...initialValues.houseArr];
+
+      let filteredArr = newHouseArr;
+
+      // Apply filters for price, type, rooms, etc.
+      if (state.price !== "Price") {
+        filteredArr = filteredArr.filter(
+          (house) => +house.price >= +state.price
+        );
+      }
+
+      if (state.type !== "Type") {
+        filteredArr = filteredArr.filter((house) =>
+          house.type.toLowerCase().includes(state.type.toLowerCase())
+        );
+      }
+
+      if (state.rooms !== "Rooms") {
+        filteredArr = filteredArr.filter(
+          (house) => +house.bedrooms >= +state.rooms
+        );
+      }
+
+      if (state.country !== "Country") {
+        filteredArr = filteredArr.filter((house) =>
+          house.country.toLowerCase().includes(state.country.toLowerCase())
+        );
+      }
+
+      if (state.sortBy !== "Sort By") {
+        const sortOrder = ["Highest", "Newest"].includes(state.sortBy) ? -1 : 1;
+        const sortKey =
+          state.sortBy === "Newest" || state.sortBy === "Oldest"
+            ? "year"
+            : "price";
+
+        filteredArr.sort((a, b) => sortOrder * (+a[sortKey] - +b[sortKey]));
+      }
+
+      return {
+        ...state,
+        filteredArr, // Ensure that the filtered array is set
+      };
+    }
+    case "PAGERESET": {
+      return {
+        ...state,
+        ...initialValues,
+        filteredArr: updateRecommendedArr(),
+      };
+    }
+    case "HOUSETYPE": {
+      const filteredByType = updateRecommendedArr().filter((house) =>
+        house.type.toLowerCase().includes(action.value.toLowerCase())
+      );
+      return { ...state, filteredArr: filteredByType };
+    }
+    default:
+      return state;
+  }
+};
+
+// Provider component
+const NexterProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialValues);
+
+  return (
+    <NexterContext.Provider value={{ state, dispatch }}>
+      {children}
+    </NexterContext.Provider>
+  );
+};
+
+export default NexterProvider;
+*/
+
+/*
+import { createContext, useReducer } from "react";
 
 //data
 import { housesData } from "../data/data";
@@ -47,24 +362,14 @@ const reducer = (prevState, action) => {
         : { ...house };
     });
 
-    prevState.heartFullArr = changeHouseArr;
-
-    const allFavorites = [];
-
-    changeHouseArr.forEach((house) => {
-      if (house.isFavorite === true) {
-        allFavorites.push(house);
-      }
-    });
-
-    // console.log(changeHouseArr);
-    // console.log(allFavorites);
+    const allFavorites = changeHouseArr.filter((house) => house.isFavorite);
 
     return {
       ...prevState,
       houseArr: changeHouseArr,
       favoriteArr: allFavorites,
       favArr: changeHouseArr,
+      heartFullArr: changeHouseArr,
     };
   } else if (action.type === "PRICE") {
     return { ...prevState, price: action.value };
@@ -164,26 +469,13 @@ const reducer = (prevState, action) => {
       }
     }
 
-    //filter Reset
-    // if (prevState.reset !== "Reset") {
-    //   prevState.price = "Price";
-    //   prevState.type = "Type";
-    //   prevState.country = "Country";
-    //   prevState.sortBy = "Sort By";
-    //   prevState.rooms = "Rooms";
-    //   prevState.reset = "Reset";
-    //   arr = newHouseArr;
-    // }
-    // console.log(arr.length);
-    // without filter
-
     if (action.value === "heart") {
       return { ...prevState, filteredArr: newHouseArr };
     } else if (action.value === "search") {
       if (arr.length > 0) {
         return { ...prevState, filteredArr: arr };
       } else {
-        return { ...prevState, filteredArr: [] };
+        return { ...prevState, filteredArr: newHouseArr };
       }
     }
   } else if (action.type === "PAGERESET") {
@@ -233,3 +525,4 @@ const NexterProvider = ({ children }) => {
 };
 
 export default NexterProvider;
+*/
