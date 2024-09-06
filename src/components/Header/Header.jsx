@@ -18,7 +18,7 @@ const Header = () => {
         <HeroSlider />
         <div className="header">
           <img src={logo} alt="Nexter logo" className="header__logo" />
-          <h3 className="heading-3">Your own home:</h3>
+          <h3 className="heading-3">Your own home</h3>
           <h1 className="heading-1">The ultimate personal freedom</h1>
           <Link to="/properties" className="links">
             <button className="btn header__btn">View our properties</button>

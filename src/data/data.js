@@ -109,7 +109,14 @@ import gallery14 from "../assets/gallery/gal-14.jpg";
 
 /*==================///=====================//=============//================= */
 
-export const price = ["90000", "100000", "110000", "130000", "150000"];
+export const price = [
+  "90000",
+  "100000",
+  "110000",
+  "130000",
+  "150000",
+  "200000",
+];
 
 export const sort = ["Highest", "Lowest", "Newest", "Oldest"];
 

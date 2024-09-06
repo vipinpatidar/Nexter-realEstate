@@ -24,28 +24,35 @@ const initialValues = {
 };
 
 const reducer = (state, action) => {
-  // console.log("Reducer:", action, state);
+  console.log("Reducer:", action, state);
 
   switch (action.type) {
     case "FAVORITE": {
-      let arr = housesData.map((house) => {
-        const isFavorite = state.favoriteArr.some((fav) => fav.id === house.id);
-        return { ...house, isFavorite };
-      });
-      const updatedHouseArr = arr.map((house) =>
+      let isExisted = state.favoriteArr.find((elem) => elem.id === action.id);
+
+      const arr2 = isExisted
+        ? [...state.favoriteArr].filter((elem) => elem.id !== action.id)
+        : [
+            ...state.favoriteArr,
+            [...housesData]
+              .map((elem) =>
+                elem.id === action.id
+                  ? { ...elem, isFavorite: !elem.isFavorite }
+                  : elem
+              )
+              .find((elem) => elem.id === action.id),
+          ];
+
+      const updatedHouseArr = state.houseArr.map((house) =>
         house.id === action.id
           ? { ...house, isFavorite: !house.isFavorite }
           : house
       );
 
-      const allFavorites = updatedHouseArr.filter(
-        (house) => house.isFavorite === true
-      );
-
       return {
         ...state,
         houseArr: updatedHouseArr,
-        favoriteArr: allFavorites,
+        favoriteArr: arr2,
       };
     }
     case "PRICE":
@@ -68,7 +75,7 @@ const reducer = (state, action) => {
       // Apply filters for price, type, rooms, etc.
       if (state.price !== "Price") {
         filteredArr = filteredArr.filter(
-          (house) => +house.price >= +state.price
+          (house) => +house.price <= +state.price
         );
       }
 
@@ -158,159 +165,6 @@ const NexterContextProvider = ({ children }) => {
 };
 
 export default NexterContextProvider;
-/*
-import { createContext, useReducer } from "react";
-import { housesData } from "../data/data";
-
-// Initial context object
-export const NexterContext = createContext({
-  houseArr: [],
-  favArr: [],
-  heartFullArr: [],
-  filteredArr: [],
-  favoriteArr: [],
-  recommendedArr: [],
-  price: "",
-  type: "",
-  country: "",
-  sortBy: "",
-  rooms: "",
-  reset: "",
-});
-
-// Initial state values
-const initialValues = {
-  houseArr: housesData,
-  favArr: housesData,
-  heartFullArr: [],
-  filteredArr: housesData,
-  favoriteArr: [],
-  recommendedArr: housesData,
-  price: "Price",
-  type: "Type",
-  country: "Country",
-  sortBy: "Sort By",
-  rooms: "Rooms",
-  reset: "Reset",
-};
-
-// Reducer function
-const reducer = (state, action) => {
-  const updateRecommendedArr = () =>
-    state.heartFullArr.length > 0 ? [...state.heartFullArr] : [...housesData];
-
-  switch (action.type) {
-    case "FAVORITE": {
-      const updatedFilteredArr = state.filteredArr.map((house) =>
-        house.id === action.id
-          ? { ...house, isFavorite: !house.isFavorite }
-          : house
-      );
-
-      // Also update the original favorite array for global use
-      const updatedFavArr = state.favArr.map((house) =>
-        house.id === action.id
-          ? { ...house, isFavorite: !house.isFavorite }
-          : house
-      );
-
-      const updatedFavorites = updatedFavArr.filter(
-        (house) => house.isFavorite
-      );
-
-      return {
-        ...state,
-        filteredArr: updatedFilteredArr, // Ensure filtered array is updated
-        favArr: updatedFavArr, // Global favorite array is also updated
-        favoriteArr: updatedFavorites, // Update the list of favorites
-      };
-    }
-    case "PRICE":
-    case "TYPE":
-    case "COUNTRY":
-    case "SORTBY":
-    case "ROOMS":
-    case "RESET":
-      return { ...state, [action.type.toLowerCase()]: action.value };
-
-    case "FILTER": {
-      let newHouseArr = state.heartFullArr.length
-        ? [...state.heartFullArr]
-        : [...initialValues.houseArr];
-
-      let filteredArr = newHouseArr;
-
-      // Apply filters for price, type, rooms, etc.
-      if (state.price !== "Price") {
-        filteredArr = filteredArr.filter(
-          (house) => +house.price >= +state.price
-        );
-      }
-
-      if (state.type !== "Type") {
-        filteredArr = filteredArr.filter((house) =>
-          house.type.toLowerCase().includes(state.type.toLowerCase())
-        );
-      }
-
-      if (state.rooms !== "Rooms") {
-        filteredArr = filteredArr.filter(
-          (house) => +house.bedrooms >= +state.rooms
-        );
-      }
-
-      if (state.country !== "Country") {
-        filteredArr = filteredArr.filter((house) =>
-          house.country.toLowerCase().includes(state.country.toLowerCase())
-        );
-      }
-
-      if (state.sortBy !== "Sort By") {
-        const sortOrder = ["Highest", "Newest"].includes(state.sortBy) ? -1 : 1;
-        const sortKey =
-          state.sortBy === "Newest" || state.sortBy === "Oldest"
-            ? "year"
-            : "price";
-
-        filteredArr.sort((a, b) => sortOrder * (+a[sortKey] - +b[sortKey]));
-      }
-
-      return {
-        ...state,
-        filteredArr, // Ensure that the filtered array is set
-      };
-    }
-    case "PAGERESET": {
-      return {
-        ...state,
-        ...initialValues,
-        filteredArr: updateRecommendedArr(),
-      };
-    }
-    case "HOUSETYPE": {
-      const filteredByType = updateRecommendedArr().filter((house) =>
-        house.type.toLowerCase().includes(action.value.toLowerCase())
-      );
-      return { ...state, filteredArr: filteredByType };
-    }
-    default:
-      return state;
-  }
-};
-
-// Provider component
-const NexterProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialValues);
-
-  return (
-    <NexterContext.Provider value={{ state, dispatch }}>
-      {children}
-    </NexterContext.Provider>
-  );
-};
-
-export default NexterProvider;
-*/
 
 /*
 import { createContext, useReducer } from "react";

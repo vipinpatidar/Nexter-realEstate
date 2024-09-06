@@ -55,8 +55,7 @@ const ContactForm = () => {
           <div className="address">
             <h2 className="address_heading">India</h2>
             <address className="address_address">
-              Nexter RealStates, India gate , Sitapura Jaipur, Rajasthan,
-              (302033)
+              Nexter RealStates, Jaipur, Rajasthan, (302240)
             </address>
             <p className="address_info">
               <span>

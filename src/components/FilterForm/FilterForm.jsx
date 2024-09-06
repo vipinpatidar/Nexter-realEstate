@@ -55,15 +55,6 @@ const FilterForm = ({ setIsClicked }) => {
             dispatch={dispatch}
           />
         </div>
-        {/* <div className="dropdown">
-          <Dropdown
-            items={reset}
-            type="RESET"
-            text={state?.reset}
-            dispatch={dispatch}
-          />
-        </div> */}
-
         <button
           className="dropdown-btn heading-4"
           onClick={() => {

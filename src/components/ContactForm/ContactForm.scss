@@ -29,7 +29,7 @@
     background-color: $color-grey-light-1;
     // box-shadow: 0px 10px 40px rgba(24, 26, 32, 0.12);
     box-shadow: 0px 1px 4px rgba(24, 26, 32, 0.2);
-    padding: 4rem;
+    padding: 4rem 3rem;
     @media only screen and (max-width: $bp-medium) {
       padding: 2.5rem;
     }

@@ -15,7 +15,7 @@ const ProCard = ({ home }) => {
 
   const handlerClick = (id) => {
     dispatch({ type: "FAVORITE", id: id });
-    dispatch({ type: "FILTER", value: "heart" });
+    // dispatch({ type: "FILTER", value: "heart" });
   };
 
   return (
